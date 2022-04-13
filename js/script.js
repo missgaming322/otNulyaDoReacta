@@ -1,27 +1,70 @@
 "use strict";
 
-const str = 'teSt';
-const arr = [1, 2, 3, 4, 5,];
-console.log(str.toUpperCase());
-console.log(str.toLowerCase());
-console.log(str);
+let numberOfFilms;
 
-let fruit = 'Some fruit';
+function start () {
+    numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', ''); 
 
-console.log(fruit.indexOf('q'));
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', ''); 
+    }
+}
 
-const logg = "Hello world";
+start();
 
-console.log(logg.slice(6, 11));
+console.log(2 + 2 * 2 !== '6'); 
 
-console.log(logg.substring(6, 11));
+let personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false,
+};
 
-console.log(logg.substr(6, 5));
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        const a = prompt('Один из последних просмотренных фильмов', ''),
+              b = prompt('На сколько оцените его', '');
+        if (a != null && b != null && a !='' && b !='' && a.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('done');
+        } else {
+            console.log('Error');
+            i--;
+        }
+    }
 
+}
+rememberMyFilms();
 
-const num = 12.2;
-console.log(Math.round(num));
+ function detectPersonalLenel () {
+    if (personalMovieDB.count < 10) {
+        alert('Вы мало смотрите');
+    } else if (30 >= personalMovieDB.count >= 10) {
+        alert('Вы дефолтный зритель');
+    } else {
+        alert('Да вы истиный киноман');
+    }
+}
+detectPersonalLenel();
 
-const test = '12.2px';
+function showMyDB (hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    } else {
+        alert('Ну я хуй его знает');
+    }
+}
+showMyDB(personalMovieDB.privat);
 
-console.log(parseInt(test));
+function writeYourGenres () {
+    for (let i = 1; i <= 3; i++) {
+
+        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`, '');
+    }
+}
+
+writeYourGenres();
+
+    console.log(personalMovieDB);

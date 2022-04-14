@@ -1,40 +1,94 @@
 "use strict";
 
-const arr = [1, 23, 13, 6, 8,];
-// arr[99] = 0;
-// console.log(arr.length);
-// console.log(arr);
-console.log(arr);
+let a = 5,
+    b = a;
+b = b + 5;
 
-arr.sort(compareNum);
-console.log(arr);
+console.log(b);
+console.log(a);
 
-function compareNum(a, b) {
-    return a - b;
+const obj = {
+    a: 5,
+    b: 1,
+};
+
+// const copy = obj;
+// copy.a = 10;
+
+// console.log(copy);
+// console.log(obj);
+
+function copy(mainObj) {
+    let objCopy = {};
+
+    let key;
+    for (key in mainObj) {
+        objCopy[key] = mainObj[key];
+    }
+
+
+    return objCopy;
 }
-// console.log(arr);
 
-// arr.forEach(function(item, i, arr){
-//     console.log(`${i}: ${item} внутри массива ${arr}`);
-// });
-
-// // // arr.pop();
-// // arr.push(10);
-
-
-// // console.log(arr);
+const nembers = {
+    a: 2,
+    b: 5,
+    c: {
+        x: 7,
+        y: 4,
+    },
+};
 
 
-// // for (let i = 0; i < arr.length; i++) {
-// //     console.log(arr[i]);
-// // }
 
-// for (let value of arr) {
-//     console.log(value);
-// }
+// const newNumbers = copy(nembers);
 
-// const str = prompt('', '');
-// const products = str.split(', ');
-// products.sort();
+// newNumbers.a = 10;
+// newNumbers.c.x = 10;
 
-// console.log(products.join('; '));
+// console.log(newNumbers);
+// console.log(nembers);
+
+const clone = Object.assign({}, nembers);
+clone.d = 1111;
+
+console.log(nembers);
+console.log(clone);
+
+// const oldArray = ['a', 'b', 'c',];
+// const newArray = oldArray.slice();
+
+// newArray[1] = 'asdfasdfds';
+
+// console.log(newArray);
+// console.log(oldArray);
+
+
+const video = ['youtube', 'vimeo', 'rutube'],
+      blogs = ['wordpress', 'livejournal', 'blogger'],
+      internet= [...video, ...blogs, 'vk', 'facebook'];
+
+console.log(internet);
+
+function log(a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+
+const num = [2, 5, 7];
+
+log(...num);
+
+const array = ['a', 'b'];
+
+const newArray = [...array];
+
+const q = {
+    one: 1,
+    two: 2
+};
+
+const newObj = {...q};
+
+console.log(newObj);
